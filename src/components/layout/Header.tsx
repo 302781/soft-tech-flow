@@ -1,13 +1,15 @@
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, User, Briefcase, LayoutDashboard, ListTodo } from "lucide-react";
+import { Menu, User, Briefcase, LayoutDashboard, ListTodo, Settings } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const menuItems = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
   { href: "/projects", label: "Projetos", icon: Briefcase },
   { href: "/tasks", label: "Tarefas", icon: ListTodo },
+  { href: "/profile", label: "Perfil", icon: User },
+  { href: "/settings", label: "Configurações", icon: Settings },
 ];
 
 export default function Header() {

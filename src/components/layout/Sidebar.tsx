@@ -1,12 +1,14 @@
 
 import { Link, useLocation } from "react-router-dom";
-import { Briefcase, LayoutDashboard, ListTodo } from "lucide-react";
+import { Briefcase, LayoutDashboard, ListTodo, User, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const menuItems = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
   { href: "/projects", label: "Projetos", icon: Briefcase },
   { href: "/tasks", label: "Tarefas", icon: ListTodo },
+  { href: "/profile", label: "Perfil", icon: User },
+  { href: "/settings", label: "Configurações", icon: Settings },
 ];
 
 export default function Sidebar() {
