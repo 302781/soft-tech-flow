@@ -1,7 +1,9 @@
 
 import { Link, useLocation } from "react-router-dom";
-import { Briefcase, LayoutDashboard, ListTodo, User, Settings } from "lucide-react";
+import { Briefcase, LayoutDashboard, ListTodo, User, Settings, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
 
 const menuItems = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
@@ -13,6 +15,7 @@ const menuItems = [
 
 export default function Sidebar() {
     const location = useLocation();
+    const { signOut } = useAuth();
 
     return (
         <aside className="hidden border-r bg-background md:block">
@@ -39,6 +42,16 @@ export default function Sidebar() {
                             </Link>
                         ))}
                     </nav>
+                </div>
+                <div className="mt-auto p-4">
+                    <Button 
+                        variant="ghost" 
+                        onClick={signOut}
+                        className="w-full justify-start text-muted-foreground hover:text-foreground"
+                    >
+                        <LogOut className="mr-2 h-4 w-4" />
+                        Sair
+                    </Button>
                 </div>
             </div>
         </aside>

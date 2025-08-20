@@ -1,8 +1,15 @@
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, User, Briefcase, LayoutDashboard, ListTodo, Settings } from "lucide-react";
+import { Menu, User, Briefcase, LayoutDashboard, ListTodo, Settings, LogOut } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const menuItems = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
@@ -13,6 +20,7 @@ const menuItems = [
 ];
 
 export default function Header() {
+  const { signOut, user } = useAuth();
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-background px-4 lg:h-[60px] lg:px-6 sticky top-0 z-40">
         <Sheet>
@@ -46,10 +54,20 @@ export default function Header() {
             {/* Pode adicionar uma barra de pesquisa aqui mais tarde */}
         </div>
 
-        <Button variant="ghost" size="icon" className="rounded-full">
-            <User className="h-5 w-5" />
-            <span className="sr-only">Menu do usuário</span>
-        </Button>
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="rounded-full">
+                    <User className="h-5 w-5" />
+                    <span className="sr-only">Menu do usuário</span>
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={signOut}>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Sair
+                </DropdownMenuItem>
+            </DropdownMenuContent>
+        </DropdownMenu>
     </header>
   );
 }

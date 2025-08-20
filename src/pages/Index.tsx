@@ -1,12 +1,19 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { DollarSign, ListTodo, Briefcase, Zap } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Index = () => {
+  const { user } = useAuth();
   return (
     <>
       <div className="flex items-center justify-between space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">Visão Geral</h1>
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">Visão Geral</h1>
+          <p className="text-muted-foreground">
+            Bem-vindo de volta, {user?.email?.split('@')[0] || 'Usuário'}!
+          </p>
+        </div>
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
